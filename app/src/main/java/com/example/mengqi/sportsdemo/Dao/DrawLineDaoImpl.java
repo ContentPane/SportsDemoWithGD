@@ -18,7 +18,7 @@ public class DrawLineDaoImpl implements DrawLineDao {
     private final MyDatabaseHelper mDbHelper;
     private Context context;
     private static final String TAG = "DaoDrawLine";
-
+    //
 
     public DrawLineDaoImpl(Context context) {
         this.context = context;
