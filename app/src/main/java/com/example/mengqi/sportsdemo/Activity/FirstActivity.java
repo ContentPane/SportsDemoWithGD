@@ -1,0 +1,15 @@
+package com.example.mengqi.sportsdemo.Activity;
+
+import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
+
+import com.example.mengqi.sportsdemo.R;
+
+public class FirstActivity extends AppCompatActivity {
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_first);
+    }
+}
