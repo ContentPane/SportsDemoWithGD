@@ -176,6 +176,7 @@
                 android:layout_height="@dimen/y100"
                 android:layout_gravity="center_vertical"
                 android:layout_marginStart="@dimen/x60"
+                android:layout_marginEnd="@dimen/x60"
                 android:background="#333338"
                 android:duration="500"
                 android:ellipsize="end"
