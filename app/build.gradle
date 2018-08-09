@@ -44,4 +44,6 @@ dependencies {
     implementation 'de.hdodenhof:circleimageview:2.2.0'
     //文字垂直滚动
     implementation 'com.xiaosu:VerticalRollingTextView:2.0.9'
+    //屏幕自适应
+    implementation 'com.zhy:autolayout:1.4.5'
 }
