@@ -38,9 +38,6 @@ dependencies {
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
-//    implementation 'com.amap.api:3dmap:6.3.1'
-//    implementation 'com.amap.api:map2d:5.2.0'
-//    implementation 'com.amap.api:navi-3dmap:latest.integration'
-//    implementation 'com.amap.api:search:6.1.0'
-//    implementation 'com.amap.api:location:4.1.0'
+    implementation 'com.blankj:utilcode:1.18.5'
+    implementation 'de.hdodenhof:circleimageview:2.2.0'
 }

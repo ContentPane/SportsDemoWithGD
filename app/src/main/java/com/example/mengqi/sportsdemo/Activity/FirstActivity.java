@@ -67,13 +67,13 @@ public class FirstActivity extends AppCompatActivity {
         tab_runship.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                mViewPager.setCurrentItem(3);
+                mViewPager.setCurrentItem(2);
             }
         });
         tab_mine.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                mViewPager.setCurrentItem(4);
+                mViewPager.setCurrentItem(3);
             }
         });
     }
