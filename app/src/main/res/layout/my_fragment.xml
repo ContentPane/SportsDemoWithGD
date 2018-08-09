@@ -22,7 +22,7 @@
                 android:layout_width="56dp"
                 android:layout_height="56dp"
                 android:layout_centerVertical="true"
-                android:paddingLeft="12dp"
+                android:paddingLeft=""
                 android:src="@drawable/start"
                 app:civ_border_color="#FFFFFF"
                 app:civ_border_width="3dp" />
@@ -165,7 +165,7 @@
 
         <!--通知滚动条-->
         <LinearLayout
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="64dp"
             android:layout_marginTop="2dp"
             android:background="#333338">
