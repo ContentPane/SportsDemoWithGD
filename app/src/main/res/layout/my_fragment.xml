@@ -13,19 +13,19 @@
         <!--第一栏layout-->
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="100dp"
+            android:layout_height="@dimen/y293"
             android:layout_gravity="center"
             android:background="#333338">
 
             <de.hdodenhof.circleimageview.CircleImageView
                 android:id="@+id/touxiang_image"
-                android:layout_width="56dp"
-                android:layout_height="56dp"
+                android:layout_width="@dimen/x135"
+                android:layout_height="@dimen/x135"
                 android:layout_centerVertical="true"
-                android:paddingLeft=""
+                android:paddingLeft="@dimen/x41"
                 android:src="@drawable/start"
                 app:civ_border_color="#FFFFFF"
-                app:civ_border_width="3dp" />
+                app:civ_border_width="1.5dp" />
 
             <!--学分姓名-->
             <LinearLayout
@@ -34,7 +34,7 @@
                 android:layout_centerVertical="true"
                 android:layout_toRightOf="@+id/touxiang_image"
                 android:orientation="vertical"
-                android:paddingLeft="10dp">
+                android:paddingLeft="@dimen/x18">
 
                 <TextView
                     android:id="@+id/user_name"
@@ -57,11 +57,11 @@
             </LinearLayout>
 
             <ImageView
-                android:layout_width="46dp"
-                android:layout_height="46dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:layout_alignParentEnd="true"
                 android:layout_centerVertical="true"
-                android:paddingEnd="20dp"
+                android:paddingEnd="@dimen/x80"
                 android:src="@drawable/ic_settings" />
 
 
@@ -70,8 +70,8 @@
         <!--第二栏-->
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="100dp"
-            android:layout_marginTop="2dp"
+            android:layout_height="@dimen/y294"
+            android:layout_marginTop="@dimen/y6"
             android:background="#333338">
 
             <!--累计里程-->
@@ -81,7 +81,7 @@
                 android:layout_alignParentStart="true"
                 android:layout_centerInParent="true"
                 android:orientation="vertical"
-                android:paddingStart="12dp">
+                android:paddingStart="@dimen/x43">
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -106,13 +106,13 @@
                 android:layout_height="match_parent"
                 android:layout_alignParentEnd="true"
                 android:layout_centerInParent="true"
-                android:paddingEnd="80dp">
+                android:paddingEnd="@dimen/x328">
 
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentTop="true"
-                    android:layout_marginTop="20dp"
+                    android:layout_marginTop="@dimen/y69"
                     android:orientation="horizontal">
 
                     <TextView
@@ -135,7 +135,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentBottom="true"
-                    android:layout_marginBottom="20dp"
+                    android:layout_marginBottom="@dimen/y69"
                     android:orientation="horizontal">
 
                     <TextView
@@ -159,23 +159,23 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentEnd="true"
                 android:layout_centerInParent="true"
-                android:paddingEnd="10dp"
+                android:paddingEnd="@dimen/x69"
                 android:src="@drawable/ic_settings" />
         </RelativeLayout>
 
         <!--通知滚动条-->
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="64dp"
-            android:layout_marginTop="2dp"
+            android:layout_height="@dimen/y200"
+            android:layout_marginTop="@dimen/y6"
             android:background="#333338">
 
             <com.xiaosu.view.text.VerticalRollingTextView
                 android:id="@+id/notice"
                 android:layout_width="match_parent"
-                android:layout_height="30dp"
+                android:layout_height="@dimen/y100"
                 android:layout_gravity="center_vertical"
-                android:layout_marginStart="10dp"
+                android:layout_marginStart="@dimen/x60"
                 android:background="#333338"
                 android:duration="500"
                 android:ellipsize="end"
@@ -187,8 +187,9 @@
         <!--九宫格第一栏-->
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="100dp"
-            android:layout_marginTop="20dp"
+            android:layout_height="@dimen/y370"
+            android:layout_marginTop="@dimen/y50"
+            android:gravity="center"
             android:background="#333338"
             android:orientation="horizontal">
 
@@ -207,7 +208,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_horizontal"
-                        android:layout_marginTop="30dp"
+                        android:layout_marginTop="@dimen/y89"
                         android:src="@drawable/ic_settings" />
 
                     <TextView
@@ -215,7 +216,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_horizontal"
-                        android:layout_marginBottom="30dp"
+                        android:layout_marginTop="@dimen/y50"
                         android:text="你的跑鞋"
                         android:textColor="#FFFFFF" />
                 </LinearLayout>
@@ -224,7 +225,7 @@
             </LinearLayout>
 
             <View
-                android:layout_width="1dp"
+                android:layout_width="@dimen/x3"
                 android:layout_height="match_parent"
                 android:background="#29292f" />
 
@@ -239,7 +240,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
-                    android:layout_marginTop="30dp"
+                    android:layout_marginTop="@dimen/y89"
                     android:src="@drawable/ic_settings" />
 
                 <TextView
@@ -247,7 +248,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
-                    android:layout_marginBottom="30dp"
+                    android:layout_marginTop="@dimen/y50"
                     android:text="你的勋章"
                     android:textColor="#FFFFFF" />
 
@@ -255,7 +256,7 @@
             </LinearLayout>
 
             <View
-                android:layout_width="1dp"
+                android:layout_width="@dimen/x3"
                 android:layout_height="match_parent"
                 android:background="#29292f" />
 
@@ -270,7 +271,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
-                    android:layout_marginTop="30dp"
+                    android:layout_marginTop="@dimen/y89"
                     android:src="@drawable/ic_settings" />
 
                 <TextView
@@ -278,7 +279,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
-                    android:layout_marginBottom="30dp"
+                    android:layout_marginTop="@dimen/y50"
                     android:text="最佳成绩"
                     android:textColor="#FFFFFF" />
 
@@ -291,8 +292,8 @@
         <!--九宫格第二栏-->
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="100dp"
-            android:layout_marginTop="1dp"
+            android:layout_height="@dimen/y370"
+            android:layout_marginTop="@dimen/x3"
             android:background="#333338"
             android:orientation="horizontal">
 
@@ -311,7 +312,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_horizontal"
-                        android:layout_marginTop="30dp"
+                        android:layout_marginTop="@dimen/y89"
                         android:src="@drawable/ic_settings" />
 
                     <TextView
@@ -319,7 +320,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_horizontal"
-                        android:layout_marginBottom="30dp"
+                        android:layout_marginTop="@dimen/y50"
                         android:text="跑步日历"
                         android:textColor="#FFFFFF" />
                 </LinearLayout>
@@ -328,7 +329,7 @@
             </LinearLayout>
 
             <View
-                android:layout_width="1dp"
+                android:layout_width="@dimen/x3"
                 android:layout_height="match_parent"
                 android:background="#29292f" />
 
@@ -343,7 +344,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
-                    android:layout_marginTop="30dp"
+                    android:layout_marginTop="@dimen/y89"
                     android:src="@drawable/ic_settings" />
 
                 <TextView
@@ -351,7 +352,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
-                    android:layout_marginBottom="30dp"
+                    android:layout_marginTop="@dimen/y50"
                     android:text="实名校检"
                     android:textColor="#FFFFFF" />
 
@@ -359,7 +360,7 @@
             </LinearLayout>
 
             <View
-                android:layout_width="1dp"
+                android:layout_width="@dimen/x3"
                 android:layout_height="match_parent"
                 android:background="#29292f" />
 
@@ -374,7 +375,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
-                    android:layout_marginTop="30dp"
+                    android:layout_marginTop="@dimen/y89"
                     android:src="@drawable/ic_settings" />
 
                 <TextView
@@ -382,7 +383,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
-                    android:layout_marginBottom="30dp"
+                    android:layout_marginTop="@dimen/y50"
                     android:text="已完成任务"
                     android:textColor="#FFFFFF" />
             </LinearLayout>
@@ -391,8 +392,8 @@
         <!--九宫格第三栏-->
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="100dp"
-            android:layout_marginTop="1dp"
+            android:layout_height="@dimen/y370"
+            android:layout_marginTop="@dimen/x3"
             android:background="#333338"
             android:orientation="horizontal">
 
@@ -411,7 +412,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_horizontal"
-                        android:layout_marginTop="30dp"
+                        android:layout_marginTop="@dimen/y89"
                         android:src="@drawable/ic_settings" />
 
                     <TextView
@@ -419,7 +420,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_horizontal"
-                        android:layout_marginBottom="30dp"
+                        android:layout_marginTop="@dimen/y50"
                         android:text="待定"
                         android:textColor="#FFFFFF" />
                 </LinearLayout>
@@ -428,7 +429,7 @@
             </LinearLayout>
 
             <View
-                android:layout_width="1dp"
+                android:layout_width="@dimen/x3"
                 android:layout_height="match_parent"
                 android:background="#29292f" />
 
@@ -443,7 +444,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
-                    android:layout_marginTop="30dp"
+                    android:layout_marginTop="@dimen/y89"
                     android:src="@drawable/ic_settings" />
 
                 <TextView
@@ -451,7 +452,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
-                    android:layout_marginBottom="30dp"
+                    android:layout_marginTop="@dimen/y50"
                     android:text="待定"
                     android:textColor="#FFFFFF" />
 
@@ -459,7 +460,7 @@
             </LinearLayout>
 
             <View
-                android:layout_width="1dp"
+                android:layout_width="@dimen/x3"
                 android:layout_height="match_parent"
                 android:background="#29292f" />
 
@@ -474,7 +475,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
-                    android:layout_marginTop="30dp"
+                    android:layout_marginTop="@dimen/y89"
                     android:src="@drawable/ic_settings" />
 
                 <TextView
@@ -482,7 +483,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
-                    android:layout_marginBottom="30dp"
+                    android:layout_marginTop="@dimen/y50"
                     android:text="待定"
                     android:textColor="#FFFFFF" />
             </LinearLayout>
