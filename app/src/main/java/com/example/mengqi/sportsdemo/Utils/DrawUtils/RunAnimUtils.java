@@ -7,6 +7,7 @@ import android.view.ViewAnimationUtils;
 import android.widget.RelativeLayout;
 
 public class RunAnimUtils {
+    private IAnimCallBack callBack;
     public static void handleAnimate(final View animateView, int centerX, int centerY) {
         // 隐藏
         if (animateView.getVisibility() == View.VISIBLE) {
@@ -34,13 +35,14 @@ public class RunAnimUtils {
 
                     }
                 });
-                animatorHide.setDuration(500);
+                animatorHide.setDuration(400);
                 animatorHide.start();
             } else {
                 animateView.setVisibility(View.GONE);
             }
             animateView.setEnabled(false);
         } else {
+            // 显示
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
                 final Animator animator = ViewAnimationUtils.createCircularReveal(animateView,
                         centerX, centerY, 0, (float) Math.hypot(animateView.getWidth(), animateView.getHeight()));
@@ -65,12 +67,20 @@ public class RunAnimUtils {
 
                     }
                 });
-                animator.setDuration(500);
+                animator.setDuration(400);
                 animator.start();
             } else {
                 animateView.setVisibility(View.VISIBLE);
             }
             animateView.setEnabled(true);
         }
+    }
+
+    public interface IAnimCallBack {
+        void callBack(boolean isFinishAnim);
+    }
+
+    public void setLocationCallBack(IAnimCallBack callBack) {
+        this.callBack = callBack;
     }
 }

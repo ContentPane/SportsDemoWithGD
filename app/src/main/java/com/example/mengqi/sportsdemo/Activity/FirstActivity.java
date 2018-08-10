@@ -36,6 +36,7 @@ import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import de.hdodenhof.circleimageview.CircleImageView;
 
 public class FirstActivity extends AppCompatActivity {
     private static final String TAG = "FirstActivity";
@@ -52,12 +53,12 @@ public class FirstActivity extends AppCompatActivity {
     RelativeLayout tab_runship;
     @BindView(R.id.tab_mine)
     RelativeLayout tab_mine;
-    @BindView(R.id.tab_blank)
-    RelativeLayout tab_blank;
     @BindView(R.id.runbackground)
     FrameLayout runbackground;
     @BindView(R.id.runbackground_cancel)
     ImageView cacel_runbackground;
+    @BindView(R.id.run_icon)
+    CircleImageView runIcon;
     List<Fragment> mFragmentList;
 
     int width;
@@ -68,6 +69,7 @@ public class FirstActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_first);
+        // 状态栏透明化
         if (Build.VERSION.SDK_INT >= 21) {
             View decorView = getWindow().getDecorView();
             int option = View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
@@ -98,21 +100,21 @@ public class FirstActivity extends AppCompatActivity {
         mViewPager.setAdapter(fragmentAdapter);
         mViewPager.setCurrentItem(0, true);
 
+        // 获取屏幕宽高确定圆形动画原点
         DisplayMetrics metrics = new DisplayMetrics();
         getWindowManager().getDefaultDisplay().getMetrics(metrics);
         width = metrics.widthPixels;
         height = metrics.heightPixels;
 
-//        Log.d(TAG, "onCreate:  " + width + " " + height);
-//
-//        EventBus.getDefault().post(new ScreenEvent(width, height));
-
+        // 成绩页面
         tab_score.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 mViewPager.setCurrentItem(0);
             }
         });
+
+        // 排行页面
         tab_rank.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -120,36 +122,43 @@ public class FirstActivity extends AppCompatActivity {
             }
         });
 
-        tab_blank.setOnClickListener(new View.OnClickListener() {
+        // 跑步启动动画
+        runIcon.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                RunAnimUtils.handleAnimate(runbackground,width/2,height);
+                RunAnimUtils.handleAnimate(runbackground, width / 2, height);
+                runIcon.setEnabled(false);
                 cacel_runbackground.setVisibility(View.VISIBLE);
                 mainInterface.setVisibility(View.GONE);
             }
         });
 
+        // 跑步取消动画
         cacel_runbackground.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                RunAnimUtils.handleAnimate(runbackground,width/2,height);
+                RunAnimUtils.handleAnimate(runbackground, width / 2, height);
                 cacel_runbackground.setVisibility(View.GONE);
                 new Handler().postDelayed(new Runnable() {
                     public void run() {
+                        runIcon.setEnabled(true);
                         mainInterface.setVisibility(View.VISIBLE);
                     }
 
-                }, 800);
+                }, 700);
 
             }
         });
 
+        // 跑圈页面
         tab_runship.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 mViewPager.setCurrentItem(3);
             }
         });
+
+        // 我的页面
         tab_mine.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

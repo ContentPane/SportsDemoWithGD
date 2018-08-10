@@ -56,9 +56,6 @@ public class MainActivity extends AppCompatActivity implements LocationSource {
     private LocationSource.OnLocationChangedListener mListener = null;//定位监听器
     private GaodeLocationUtil locationUtil;
 
-//    public LocationClient mLocationClient = null;
-//    MyLocationListener locListener = new MyLocationListener();
-
     // DrawLine数据库初始化
     private DrawLineDaoImpl drawLineFormDB;
     private DrawOnMap drawOnMap;
@@ -174,44 +171,6 @@ public class MainActivity extends AppCompatActivity implements LocationSource {
 
 
 
-    /**
-     * 设置中心点和添加marker
-     * <p>
-     * //   * @param map
-     * //   * @param bdLocation
-     * //   * @param isShowLoc
-     */
-
-//    public void setPosition2Center(BaiduMap map, BDLocation bdLocation, Boolean isShowLoc) {
-//        MyLocationData locData = new MyLocationData.Builder()
-//                .accuracy(bdLocation.getRadius())
-//                .direction(bdLocation.getRadius()).latitude(bdLocation.getLatitude())
-//                .longitude(bdLocation.getLongitude()).build();
-//        map.setMyLocationData(locData);  // 设置定位中心点数据
-//
-//        if (isShowLoc) {
-//            if (firstIn) {
-//                //把定位set入地图并更新地图
-//                updateMap(map, bdLocation, BASE_LOCATION_ZOOM);
-//                firstIn = false;
-//            } else {
-//                float zoomLevel = mBaiduMap.getMapStatus().zoom;
-//                updateMap(map, bdLocation, zoomLevel);
-//                Log.d(TAG, "setPosition2Center: " + zoomLevel);
-//            }
-//        }
-//    }
-
-
-
-    // 更新地图
-//    private void updateMap(BaiduMap map, BDLocation bdLocation, float zoomLevel) {
-//        LatLng ll = new LatLng(bdLocation.getLatitude(), bdLocation.getLongitude());
-//        MapStatus.Builder builder = new MapStatus.Builder();
-//        builder.target(ll).zoom(zoomLevel);  //百度地图将地图的级别定义为【3~19】
-//        map.animateMapStatus(MapStatusUpdateFactory.newMapStatus(builder.build()));// 把定位set入地图并更新地图
-//    }
-
     private void drawLine() {
      // 画出导航线路
         List<PolylineOptions> roadOverlay = drawOnMap.drawRoad(arrowBitmap, LINE_WIDTH);
@@ -223,22 +182,6 @@ public class MainActivity extends AppCompatActivity implements LocationSource {
         for (MarkerOptions options:startAndEndMarker) {
             aMap.addMarker(options);
         }
-
-    // 画出起点和终点
-//        List<OverlayOptions> startAndEndList = drawOnMap.drawStartAndEnd(startBitmap, endBitmap);
-//        mBaiduMap.addOverlays(roadOverlay);
-//        mBaiduMap.addOverlays(startAndEndList);
-
-    //添加弧线
-    /*
-     *ArcOptions:弧线构造选项，继承自 #OverlayOptions
-     * 	color(int color):设置弧线的颜色
-     *  width(int width):设置弧线的线宽
-     *  points(LatLng start, LatLng middle, LatLng end):设置弧线的起点、中点、终点坐标
-     * */
-//        OverlayOptions ooArc = new ArcOptions().color(0xAA00FF00).width(4).points(p1, p2, p3);
-//        mBaiduMap.addOverlay(ooArc);
-//        bitmap.recycle();
     }
 
 

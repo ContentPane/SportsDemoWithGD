@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".Activity.MainActivity">
 
     <LinearLayout
@@ -28,10 +29,11 @@
 
             <!--1-->
             <RelativeLayout
+                android:layout_gravity="center"
                 android:id="@+id/tab_score"
                 android:layout_width="0dp"
-                android:layout_height="@dimen/y160"
-                android:layout_gravity="center"
+                android:layout_height="match_parent"
+                android:paddingBottom="@dimen/y6"
                 android:layout_weight="1">
 
                 <TextView
@@ -40,24 +42,23 @@
                     android:layout_height="wrap_content"
                     android:layout_alignParentBottom="true"
                     android:layout_centerHorizontal="true"
-                    android:paddingBottom="@dimen/y10"
                     android:text="成绩"
                     android:textColor="#707073" />
 
                 <ImageView
+                    android:layout_marginBottom="@dimen/y10"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_above="@+id/item_score"
                     android:layout_centerHorizontal="true"
-                    android:layout_marginBottom="@dimen/y10"
-                    android:paddingTop="5dp"
                     android:src="@drawable/ic_settings" />
             </RelativeLayout>
             <!--2-->
             <RelativeLayout
                 android:id="@+id/tab_rank"
                 android:layout_width="0dp"
-                android:layout_height="@dimen/y160"
+                android:layout_height="match_parent"
+                android:paddingBottom="@dimen/y6"
                 android:layout_gravity="center"
                 android:layout_weight="1">
 
@@ -67,46 +68,25 @@
                     android:layout_height="wrap_content"
                     android:layout_alignParentBottom="true"
                     android:layout_centerHorizontal="true"
-                    android:paddingBottom="@dimen/y10"
                     android:text="榜单"
                     android:textColor="#707073" />
 
                 <ImageView
+                    android:layout_marginBottom="@dimen/y10"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_above="@+id/item_rank"
                     android:layout_centerHorizontal="true"
-                    android:layout_marginBottom="@dimen/y10"
-                    android:paddingTop="5dp"
                     android:src="@drawable/ic_settings" />
             </RelativeLayout>
 
             <!--3-->
             <RelativeLayout
-                android:id="@+id/tab_blank"
                 android:layout_width="0dp"
-                android:layout_height="@dimen/y160"
+                android:layout_height="match_parent"
+                android:paddingBottom="@dimen/y6"
                 android:layout_gravity="center_horizontal"
                 android:layout_weight="1">
-
-                <TextView
-                android:id="@+id/item_run"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentBottom="true"
-                android:layout_centerHorizontal="true"
-                android:paddingBottom="@dimen/y10"
-                android:text="跑"
-                android:textColor="#707073" />
-
-                <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_above="@+id/item_run"
-                android:layout_centerHorizontal="true"
-                android:layout_marginBottom="@dimen/y10"
-                android:paddingTop="5dp"
-                android:src="@drawable/ic_settings" />
 
             </RelativeLayout>
 
@@ -114,7 +94,8 @@
             <RelativeLayout
                 android:id="@+id/tab_runship"
                 android:layout_width="0dp"
-                android:layout_height="@dimen/y160"
+                android:layout_height="match_parent"
+                android:paddingBottom="@dimen/y6"
                 android:layout_gravity="center"
                 android:layout_weight="1">
 
@@ -124,7 +105,6 @@
                     android:layout_height="wrap_content"
                     android:layout_alignParentBottom="true"
                     android:layout_centerHorizontal="true"
-                    android:paddingBottom="@dimen/y10"
                     android:text="跑友圈"
                     android:textColor="#707073" />
 
@@ -134,7 +114,6 @@
                     android:layout_above="@+id/item_runship"
                     android:layout_centerHorizontal="true"
                     android:layout_marginBottom="@dimen/y10"
-                    android:paddingTop="5dp"
                     android:src="@drawable/ic_settings" />
             </RelativeLayout>
 
@@ -142,7 +121,8 @@
             <RelativeLayout
                 android:id="@+id/tab_mine"
                 android:layout_width="0dp"
-                android:layout_height="@dimen/y160"
+                android:layout_height="match_parent"
+                android:paddingBottom="@dimen/y6"
                 android:layout_gravity="center"
                 android:layout_weight="1">
 
@@ -152,7 +132,6 @@
                     android:layout_height="wrap_content"
                     android:layout_alignParentBottom="true"
                     android:layout_centerHorizontal="true"
-                    android:paddingBottom="@dimen/y10"
                     android:text="我的"
                     android:textColor="#707073" />
 
@@ -162,7 +141,6 @@
                     android:layout_above="@+id/item_my"
                     android:layout_centerHorizontal="true"
                     android:layout_marginBottom="@dimen/y10"
-                    android:paddingTop="5dp"
                     android:src="@drawable/ic_settings" />
             </RelativeLayout>
 
@@ -170,26 +148,44 @@
 
     </LinearLayout>
 
-    <FrameLayout
-        android:id="@+id/runbackground"
-        android:visibility="invisible"
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <ImageView
-            android:src="@drawable/background"
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:layout_width="@dimen/y190"
+            android:layout_height="@dimen/y190"
+            android:id="@+id/run_icon"
+            app:civ_circle_background_color="#64230f"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:src="@drawable/run"
+            />
+
+        <FrameLayout
+            android:id="@+id/runbackground"
+            android:visibility="invisible"
             android:layout_width="match_parent"
-            android:layout_height="match_parent" />
+            android:layout_height="match_parent">
 
-        <ImageView
-            android:layout_marginBottom="@dimen/y30"
-            android:src="@drawable/ic_settings"
-            android:layout_gravity="bottom|center_horizontal"
-            android:id="@+id/runbackground_cancel"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            <ImageView
+                android:scaleType="centerCrop"
+                android:src="@drawable/background"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
 
-    </FrameLayout>
+            <ImageView
+                android:layout_marginBottom="@dimen/y30"
+                android:src="@drawable/ic_settings"
+                android:layout_gravity="bottom|center_horizontal"
+                android:id="@+id/runbackground_cancel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+        </FrameLayout>
+
+    </RelativeLayout>
+
 
 
 
