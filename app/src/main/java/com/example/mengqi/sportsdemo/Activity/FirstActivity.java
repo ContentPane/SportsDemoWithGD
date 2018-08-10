@@ -1,13 +1,20 @@
 package com.example.mengqi.sportsdemo.Activity;
 
+import android.graphics.Color;
+import android.os.Build;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
+import android.view.Window;
+import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
+import android.widget.ScrollView;
 
+import com.blankj.utilcode.util.BarUtils;
 import com.example.mengqi.sportsdemo.Adapter.TabFragmentPagerAdapter;
 import com.example.mengqi.sportsdemo.Fragments.Fragment_mine;
 import com.example.mengqi.sportsdemo.Fragments.Fragment_rank;
@@ -19,6 +26,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class FirstActivity extends AppCompatActivity {
+    private static final String TAG = "FirstActivity";
     ViewPager mViewPager;
     List<Fragment> mFragmentList;
     RelativeLayout tab_score;
@@ -30,6 +38,13 @@ public class FirstActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_first);
+        if (Build.VERSION.SDK_INT >= 21) {
+            View decorView = getWindow().getDecorView();
+            int option = View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
+                    | View.SYSTEM_UI_FLAG_LAYOUT_STABLE;
+            decorView.setSystemUiVisibility(option);
+            getWindow().setStatusBarColor(Color.TRANSPARENT);
+        }
         mViewPager = (ViewPager) findViewById(R.id.myViewPager);
         mFragmentList = new ArrayList<>();
         tab_score = (RelativeLayout) findViewById(R.id.tab_score);

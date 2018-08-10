@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.blankj.utilcode.util.BarUtils;
 import com.example.mengqi.sportsdemo.R;
 import com.xiaosu.view.text.DataSetAdapter;
 import com.xiaosu.view.text.VerticalRollingTextView;
