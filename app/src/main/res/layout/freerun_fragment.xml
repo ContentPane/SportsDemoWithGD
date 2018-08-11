@@ -4,7 +4,10 @@
               android:layout_width="match_parent"
               android:layout_height="match_parent">
     <TextView
-        android:text="freeRun"
+        android:layout_marginTop="@dimen/y40"
+        android:layout_marginStart="@dimen/x14"
+        android:textColor="#CCFFFFFF"
+        android:text="自由模式下的跑步成绩,不计入体育成绩"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"/>
 

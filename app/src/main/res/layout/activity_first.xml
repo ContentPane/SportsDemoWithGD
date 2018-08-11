@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".Activity.MainActivity">
+             xmlns:app="http://schemas.android.com/apk/res-auto"
+             xmlns:tools="http://schemas.android.com/tools"
+             android:layout_width="match_parent"
+             android:layout_height="match_parent"
+             tools:context=".Activity.MainActivity">
 
     <LinearLayout
         android:id="@+id/mainInterface"
-        android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
         <android.support.v4.view.ViewPager
             android:id="@+id/myViewPager"
@@ -29,62 +29,71 @@
 
             <!--1-->
             <RelativeLayout
-                android:layout_gravity="center"
                 android:id="@+id/tab_score"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:paddingBottom="@dimen/y6"
                 android:layout_weight="1">
 
-                <TextView
-                    android:id="@+id/item_score"
+                <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_alignParentBottom="true"
-                    android:layout_centerHorizontal="true"
-                    android:text="成绩"
-                    android:textColor="#707073" />
+                    android:layout_centerInParent="true"
+                    android:orientation="vertical">
 
-                <ImageView
-                    android:layout_marginBottom="@dimen/y10"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_above="@+id/item_score"
-                    android:layout_centerHorizontal="true"
-                    android:src="@drawable/ic_settings" />
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_marginBottom="@dimen/y6"
+                        android:src="@drawable/ic_settings"/>
+
+                    <TextView
+                        android:id="@+id/item_score"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:text="成绩"
+                        android:textColor="#707073"/>
+
+                </LinearLayout>
+
             </RelativeLayout>
+
             <!--2-->
             <RelativeLayout
                 android:id="@+id/tab_rank"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:paddingBottom="@dimen/y6"
-                android:layout_gravity="center"
                 android:layout_weight="1">
 
-                <TextView
-                    android:id="@+id/item_rank"
+                <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_alignParentBottom="true"
-                    android:layout_centerHorizontal="true"
-                    android:text="榜单"
-                    android:textColor="#707073" />
+                    android:layout_centerInParent="true"
+                    android:orientation="vertical">
 
-                <ImageView
-                    android:layout_marginBottom="@dimen/y10"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_above="@+id/item_rank"
-                    android:layout_centerHorizontal="true"
-                    android:src="@drawable/ic_settings" />
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_marginBottom="@dimen/y6"
+                        android:src="@drawable/ic_settings"/>
+
+                    <TextView
+                        android:id="@+id/item_rank"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:text="榜单"
+                        android:textColor="#707073"/>
+                </LinearLayout>
+
             </RelativeLayout>
 
             <!--3-->
             <RelativeLayout
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:paddingBottom="@dimen/y6"
                 android:layout_gravity="center_horizontal"
                 android:layout_weight="1">
 
@@ -95,26 +104,31 @@
                 android:id="@+id/tab_runship"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:paddingBottom="@dimen/y6"
-                android:layout_gravity="center"
                 android:layout_weight="1">
 
-                <TextView
-                    android:id="@+id/item_runship"
+                <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_alignParentBottom="true"
-                    android:layout_centerHorizontal="true"
-                    android:text="跑友圈"
-                    android:textColor="#707073" />
+                    android:layout_centerInParent="true"
+                    android:orientation="vertical">
 
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_above="@+id/item_runship"
-                    android:layout_centerHorizontal="true"
-                    android:layout_marginBottom="@dimen/y10"
-                    android:src="@drawable/ic_settings" />
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_marginBottom="@dimen/y6"
+                        android:src="@drawable/ic_settings"/>
+
+                    <TextView
+                        android:id="@+id/item_runship"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:text="跑友圈"
+                        android:textColor="#707073"/>
+
+                </LinearLayout>
+
             </RelativeLayout>
 
             <!--5-->
@@ -122,26 +136,34 @@
                 android:id="@+id/tab_mine"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:paddingBottom="@dimen/y6"
-                android:layout_gravity="center"
                 android:layout_weight="1">
 
-                <TextView
-                    android:id="@+id/item_my"
+                <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_alignParentBottom="true"
-                    android:layout_centerHorizontal="true"
-                    android:text="我的"
-                    android:textColor="#707073" />
+                    android:layout_centerInParent="true"
+                    android:orientation="vertical">
 
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_above="@+id/item_my"
-                    android:layout_centerHorizontal="true"
-                    android:layout_marginBottom="@dimen/y10"
-                    android:src="@drawable/ic_settings" />
+                    <ImageView
+                        android:layout_marginBottom="@dimen/y6"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:src="@drawable/ic_settings"/>
+
+                    <TextView
+                        android:id="@+id/item_my"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:text="我的"
+                        android:textColor="#707073"/>
+
+                </LinearLayout>
+
+
+
+
             </RelativeLayout>
 
         </LinearLayout>
@@ -153,27 +175,27 @@
         android:layout_height="match_parent">
 
         <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/run_icon"
             android:layout_width="@dimen/y190"
             android:layout_height="@dimen/y190"
-            android:id="@+id/run_icon"
-            app:civ_circle_background_color="#64230f"
             android:layout_alignParentBottom="true"
             android:layout_centerHorizontal="true"
             android:src="@drawable/run"
+            app:civ_circle_background_color="#64230f"
             />
 
         <FrameLayout
             android:id="@+id/runbackground"
-            android:visibility="invisible"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:visibility="invisible">
 
             <ImageView
-                android:scaleType="centerCrop"
-                android:src="@drawable/background"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent" />
-            
+                android:layout_height="match_parent"
+                android:scaleType="centerCrop"
+                android:src="@drawable/background"/>
+
 
             <RelativeLayout
                 android:layout_width="match_parent"
@@ -181,87 +203,81 @@
 
 
                 <TextView
-                    android:layout_marginTop="@dimen/y93"
-                    android:textColor="#FFFFFF"
                     android:id="@+id/school_textview"
-                    android:textSize="17sp"
-                    android:text="广东药科大学 中山校区"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"/>
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/y93"
+                    android:text="广东药科大学 中山校区"
+                    android:textColor="#FFFFFF"
+                    android:textSize="17sp"/>
 
                 <Button
-                    android:paddingStart="@dimen/x30"
-                    android:paddingEnd="@dimen/x30"
-                    android:textColor="#000000"
-                    android:background="@drawable/score_btn"
-                    android:layout_marginTop="@dimen/y73"
-                    android:text="计入成绩 0.00 公里"
-                    android:layout_alignParentEnd="true"
                     android:layout_width="wrap_content"
-                    android:layout_height="@dimen/y80"/>
+                    android:layout_height="@dimen/y80"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginTop="@dimen/y73"
+                    android:background="@drawable/score_btn"
+                    android:paddingEnd="@dimen/x30"
+                    android:paddingStart="@dimen/x30"
+                    android:text="计入成绩 0.00 公里"
+                    android:textColor="#000000"/>
 
                 <LinearLayout
-                    android:orientation="vertical"
-                    android:layout_below="@+id/school_textview"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent">
+                    android:layout_height="match_parent"
+                    android:layout_below="@+id/school_textview"
+                    android:orientation="vertical">
 
                     <android.support.design.widget.TabLayout
-                        app:tabIndicatorColor="#FF5555"
-                        app:tabTextColor="#FFFFFF"
-                        app:tabSelectedTextColor="#000000"
-                        app:tabMode="fixed"
-                        app:tabGravity="fill"
                         android:id="@+id/run_tablayout"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content" />
+                        android:layout_height="wrap_content"
+                        app:tabGravity="fill"
+                        app:tabIndicatorColor="#FFFFFF"
+                        app:tabMode="fixed"
+                        app:tabSelectedTextColor="#CCFFFFFF"
+                        app:tabTextColor="#66FFFFFF"/>
+
                     <android.support.v4.view.ViewPager
                         android:id="@+id/run_viewpager"
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent" />
+                        android:layout_height="match_parent"/>
                 </LinearLayout>
 
                 <LinearLayout
-                    android:orientation="vertical"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
                     android:layout_alignParentBottom="true"
                     android:layout_marginBottom="@dimen/y30"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
+                    android:orientation="vertical">
 
                     <TextView
-                        android:layout_marginBottom="@dimen/y30"
                         android:id="@+id/location_address"
-                        android:text="广东药科大学中山校区"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"/>
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="@dimen/y30"
+                        android:text="广东药科大学中山校区"/>
 
                     <TextView
-                        android:layout_marginBottom="@dimen/y30"
                         android:id="@+id/task_kilometer"
-                        android:text="学期目标:0公里,4396位校友已参与"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"/>
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="@dimen/y30"
+                        android:text="学期目标:0公里,4396位校友已参与"/>
 
 
                     <ImageView
-                        android:layout_gravity="center_horizontal"
-                        android:src="@drawable/ic_settings"
                         android:id="@+id/runbackground_cancel"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content" />
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:src="@drawable/ic_settings"/>
 
                 </LinearLayout>
 
             </RelativeLayout>
 
-
-
         </FrameLayout>
-
     </RelativeLayout>
-
-
-
-
 
 </FrameLayout>

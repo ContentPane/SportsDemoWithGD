@@ -5,7 +5,10 @@
               android:layout_height="match_parent">
 
     <TextView
-        android:text="togetherRun"
+        android:layout_marginTop="@dimen/y40"
+        android:layout_marginStart="@dimen/x14"
+        android:text="创建房间,约小伙伴共同完成"
+        android:textColor="#AAFFFFFF"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"/>
 

@@ -9,7 +9,7 @@ import com.example.mengqi.sportsdemo.Fragments.Fragment_randomMode;
 import com.example.mengqi.sportsdemo.Fragments.Fragment_runTogether;
 
 public class RunAdapter extends FragmentPagerAdapter {
-    private String[] mTitles = new String[]{"自由模式","随机终点","约跑模式"};
+    private String[] mTitles = new String[]{"自由模式", "随机终点", "约跑模式"};
 
 
     public RunAdapter(FragmentManager fm) {

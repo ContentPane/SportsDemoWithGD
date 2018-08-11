@@ -66,7 +66,6 @@ public class FirstActivity extends AppCompatActivity {
     int width;
     int height;
     List<Fragment> mFragmentList;
-    List<Fragment> mRunFragmentsList;
 
 
     @Override
@@ -84,20 +83,13 @@ public class FirstActivity extends AppCompatActivity {
 
         ButterKnife.bind(this);
 
-
-//        Fragment_freeMode fragmentFreeMode = new Fragment_freeMode();
-//        Fragment_randomMode fragmentRandomMode = new Fragment_randomMode();
-//        Fragment_runTogether fragmentRunTogether = new Fragment_runTogether();
-//        mRunFragmentsList.add(fragmentFreeMode);
-//        mRunFragmentsList.add(fragmentRandomMode);
-//        mRunFragmentsList.add(fragmentRunTogether);
         RunAdapter runAdapter = new RunAdapter(getSupportFragmentManager());
         runViewPager.setAdapter(runAdapter);
         runTabLayout.setupWithViewPager(runViewPager);
 
 
 
-
+        //底部TabLayout绑定ViewPager和Fragement初始化
         mFragmentList = new ArrayList<>();
         Fragment_run fragment_run = new Fragment_run();
         Fragment_mine fragment_mine = new Fragment_mine();
