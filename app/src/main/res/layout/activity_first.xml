@@ -173,14 +173,88 @@
                 android:src="@drawable/background"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent" />
+            
 
-            <ImageView
-                android:layout_marginBottom="@dimen/y30"
-                android:src="@drawable/ic_settings"
-                android:layout_gravity="bottom|center_horizontal"
-                android:id="@+id/runbackground_cancel"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+
+                <TextView
+                    android:layout_marginTop="@dimen/y93"
+                    android:textColor="#FFFFFF"
+                    android:id="@+id/school_textview"
+                    android:textSize="17sp"
+                    android:text="广东药科大学 中山校区"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+
+                <Button
+                    android:paddingStart="@dimen/x30"
+                    android:paddingEnd="@dimen/x30"
+                    android:textColor="#000000"
+                    android:background="@drawable/score_btn"
+                    android:layout_marginTop="@dimen/y73"
+                    android:text="计入成绩 0.00 公里"
+                    android:layout_alignParentEnd="true"
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/y80"/>
+
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_below="@+id/school_textview"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <android.support.design.widget.TabLayout
+                        app:tabIndicatorColor="#FF5555"
+                        app:tabTextColor="#FFFFFF"
+                        app:tabSelectedTextColor="#000000"
+                        app:tabMode="fixed"
+                        app:tabGravity="fill"
+                        android:id="@+id/run_tablayout"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
+                    <android.support.v4.view.ViewPager
+                        android:id="@+id/run_viewpager"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_alignParentBottom="true"
+                    android:layout_marginBottom="@dimen/y30"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:layout_marginBottom="@dimen/y30"
+                        android:id="@+id/location_address"
+                        android:text="广东药科大学中山校区"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+
+                    <TextView
+                        android:layout_marginBottom="@dimen/y30"
+                        android:id="@+id/task_kilometer"
+                        android:text="学期目标:0公里,4396位校友已参与"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"/>
+
+
+                    <ImageView
+                        android:layout_gravity="center_horizontal"
+                        android:src="@drawable/ic_settings"
+                        android:id="@+id/runbackground_cancel"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+
+                </LinearLayout>
+
+            </RelativeLayout>
+
+
 
         </FrameLayout>
 

@@ -113,7 +113,7 @@ public class MainActivity extends AppCompatActivity implements LocationSource {
         mStopBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-//                mLocationClient.stop();
+
             }
         });
 

@@ -5,31 +5,30 @@ import android.os.Build;
 import android.os.Handler;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
-import android.util.Log;
 import android.view.View;
-import android.view.Window;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
-import android.widget.ScrollView;
+import android.support.design.widget.TabLayout;
 
-import com.blankj.utilcode.util.BarUtils;
+import com.example.mengqi.sportsdemo.Adapter.RunAdapter;
 import com.example.mengqi.sportsdemo.Adapter.TabFragmentPagerAdapter;
-import com.example.mengqi.sportsdemo.Event.ScreenEvent;
+import com.example.mengqi.sportsdemo.Fragments.Fragment_freeMode;
 import com.example.mengqi.sportsdemo.Fragments.Fragment_mine;
+import com.example.mengqi.sportsdemo.Fragments.Fragment_randomMode;
 import com.example.mengqi.sportsdemo.Fragments.Fragment_rank;
 import com.example.mengqi.sportsdemo.Fragments.Fragment_run;
+import com.example.mengqi.sportsdemo.Fragments.Fragment_runTogether;
 import com.example.mengqi.sportsdemo.Fragments.Fragment_runship;
 import com.example.mengqi.sportsdemo.Fragments.Fragment_score;
 import com.example.mengqi.sportsdemo.R;
 import com.example.mengqi.sportsdemo.Utils.DrawUtils.RunAnimUtils;
-
-import org.greenrobot.eventbus.EventBus;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -59,10 +58,15 @@ public class FirstActivity extends AppCompatActivity {
     ImageView cacel_runbackground;
     @BindView(R.id.run_icon)
     CircleImageView runIcon;
-    List<Fragment> mFragmentList;
+    @BindView(R.id.run_viewpager)
+    ViewPager runViewPager;
+    @BindView(R.id.run_tablayout)
+    TabLayout runTabLayout;
 
     int width;
     int height;
+    List<Fragment> mFragmentList;
+    List<Fragment> mRunFragmentsList;
 
 
     @Override
@@ -81,8 +85,20 @@ public class FirstActivity extends AppCompatActivity {
         ButterKnife.bind(this);
 
 
-        mFragmentList = new ArrayList<>();
+//        Fragment_freeMode fragmentFreeMode = new Fragment_freeMode();
+//        Fragment_randomMode fragmentRandomMode = new Fragment_randomMode();
+//        Fragment_runTogether fragmentRunTogether = new Fragment_runTogether();
+//        mRunFragmentsList.add(fragmentFreeMode);
+//        mRunFragmentsList.add(fragmentRandomMode);
+//        mRunFragmentsList.add(fragmentRunTogether);
+        RunAdapter runAdapter = new RunAdapter(getSupportFragmentManager());
+        runViewPager.setAdapter(runAdapter);
+        runTabLayout.setupWithViewPager(runViewPager);
 
+
+
+
+        mFragmentList = new ArrayList<>();
         Fragment_run fragment_run = new Fragment_run();
         Fragment_mine fragment_mine = new Fragment_mine();
         Fragment_rank fragment_rank = new Fragment_rank();
@@ -94,8 +110,8 @@ public class FirstActivity extends AppCompatActivity {
         mFragmentList.add(fragment_runship);
         mFragmentList.add(fragment_mine);
 
-        FragmentManager fragmentManager = getSupportFragmentManager();
-        TabFragmentPagerAdapter fragmentAdapter = new TabFragmentPagerAdapter(fragmentManager, mFragmentList);
+
+        TabFragmentPagerAdapter fragmentAdapter = new TabFragmentPagerAdapter(getSupportFragmentManager(), mFragmentList);
 
         mViewPager.setAdapter(fragmentAdapter);
         mViewPager.setCurrentItem(0, true);
