@@ -1,14 +1,43 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              android:orientation="vertical"
-              android:layout_width="match_parent"
-              android:layout_height="match_parent">
-    <TextView
-        android:layout_marginTop="@dimen/y40"
-        android:layout_marginStart="@dimen/x14"
-        android:textColor="#CCFFFFFF"
-        android:text="自由模式下的跑步成绩,不计入体育成绩"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:app="http://schemas.android.com/apk/res-auto"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
 
-</LinearLayout>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/x14"
+        android:layout_marginTop="@dimen/y40"
+        android:text="自由模式下的跑步成绩,不计入体育成绩"
+        android:textColor="#CCFFFFFF"/>
+
+    <FrameLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true">
+
+        <com.example.mengqi.sportsdemo.Utils.DrawUtils.DiffuseView
+            android:id="@+id/spreadView_freerun"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:diffuse_color="#77FFFFFF"
+            app:diffuse_coreColor="#88FFFFFF"
+            app:diffuse_coreRadius="80"
+            app:diffuse_maxWidth="500"
+            app:diffuse_speed="1"
+            app:diffuse_width="5"/>
+
+        <Button
+            android:layout_gravity="center"
+            android:layout_width="@dimen/y240"
+            android:layout_height="@dimen/y240"
+            android:background="@drawable/begin_btn"
+            android:text="开始"
+            android:textColor="#22bbbb"/>
+
+    </FrameLayout>
+
+
+</RelativeLayout>
