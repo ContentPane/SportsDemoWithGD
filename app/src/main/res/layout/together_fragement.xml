@@ -1,15 +1,47 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              android:orientation="vertical"
-              android:layout_width="match_parent"
-              android:layout_height="match_parent">
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
 
     <TextView
-        android:layout_marginTop="@dimen/y40"
-        android:layout_marginStart="@dimen/x14"
-        android:text="创建房间,约小伙伴共同完成"
-        android:textColor="#AAFFFFFF"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/x14"
+        android:layout_marginTop="@dimen/y40"
+        android:text="创建房间,约小伙伴共同完成"
+        android:textColor="#AAFFFFFF" />
 
-</LinearLayout>
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:orientation="vertical">
+
+        <Button
+            android:id="@+id/originate_run"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/begin_btn"
+            android:drawableLeft="@drawable/ic_settings_run_24dp"
+            android:drawablePadding="@dimen/x30"
+            android:paddingEnd="@dimen/x40"
+            android:paddingStart="@dimen/x40"
+            android:text="发起约跑"
+            android:textColor="#22bbbb" />
+
+        <Button
+            android:id="@+id/join_run"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/y28"
+            android:background="@drawable/begin_btn"
+            android:drawableLeft="@drawable/ic_settings_run_24dp"
+            android:drawablePadding="@dimen/x30"
+            android:paddingEnd="@dimen/x40"
+            android:paddingStart="@dimen/x40"
+            android:text="加入约跑"
+            android:textColor="#22bbbb" />
+
+    </LinearLayout>
+
+</RelativeLayout>

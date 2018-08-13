@@ -23,7 +23,6 @@ import com.example.mengqi.sportsdemo.Fragments.Fragment_freeMode;
 import com.example.mengqi.sportsdemo.Fragments.Fragment_mine;
 import com.example.mengqi.sportsdemo.Fragments.Fragment_randomMode;
 import com.example.mengqi.sportsdemo.Fragments.Fragment_rank;
-import com.example.mengqi.sportsdemo.Fragments.Fragment_run;
 import com.example.mengqi.sportsdemo.Fragments.Fragment_runTogether;
 import com.example.mengqi.sportsdemo.Fragments.Fragment_runship;
 import com.example.mengqi.sportsdemo.Fragments.Fragment_score;
@@ -63,6 +62,7 @@ public class FirstActivity extends AppCompatActivity {
     @BindView(R.id.run_tablayout)
     TabLayout runTabLayout;
 
+
     int width;
     int height;
     List<Fragment> mFragmentList;
@@ -91,14 +91,12 @@ public class FirstActivity extends AppCompatActivity {
 
         //底部TabLayout绑定ViewPager和Fragement初始化
         mFragmentList = new ArrayList<>();
-        Fragment_run fragment_run = new Fragment_run();
         Fragment_mine fragment_mine = new Fragment_mine();
         Fragment_rank fragment_rank = new Fragment_rank();
         Fragment_runship fragment_runship = new Fragment_runship();
         Fragment_score fragment_score = new Fragment_score();
         mFragmentList.add(fragment_score);
         mFragmentList.add(fragment_rank);
-        mFragmentList.add(fragment_run);
         mFragmentList.add(fragment_runship);
         mFragmentList.add(fragment_mine);
 
@@ -162,7 +160,7 @@ public class FirstActivity extends AppCompatActivity {
         tab_runship.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                mViewPager.setCurrentItem(3);
+                mViewPager.setCurrentItem(2);
             }
         });
 
@@ -170,7 +168,7 @@ public class FirstActivity extends AppCompatActivity {
         tab_mine.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                mViewPager.setCurrentItem(4);
+                mViewPager.setCurrentItem(3);
             }
         });
 

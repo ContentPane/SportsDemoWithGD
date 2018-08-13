@@ -30,6 +30,7 @@
             app:diffuse_width="5"/>
 
         <Button
+            android:id="@+id/freerun_begin_btn"
             android:layout_gravity="center"
             android:layout_width="@dimen/y240"
             android:layout_height="@dimen/y240"

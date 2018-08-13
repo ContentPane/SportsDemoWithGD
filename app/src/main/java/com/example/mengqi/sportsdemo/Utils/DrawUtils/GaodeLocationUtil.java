@@ -9,7 +9,7 @@ import com.amap.api.location.AMapLocationClientOption;
 import com.amap.api.location.AMapLocationListener;
 
 public class GaodeLocationUtil implements AMapLocationListener {
-    private static final int SPAN_SECOND = 5000;
+    private static final int SPAN_SECOND = 10000;
     private AMapLocationClient aMapLocationClient;
     private AMapLocationClientOption clientOption;
     private ILocationCallBack callBack;
@@ -39,6 +39,9 @@ public class GaodeLocationUtil implements AMapLocationListener {
         aMapLocationClient.startLocation();
     }
 
+    public void stopLocation() {
+        aMapLocationClient.stopLocation();
+    }
     @Override
     public void onLocationChanged(AMapLocation aMapLocation) {
         if (aMapLocation != null) {

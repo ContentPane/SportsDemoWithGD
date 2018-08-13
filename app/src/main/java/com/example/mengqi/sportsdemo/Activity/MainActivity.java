@@ -8,13 +8,14 @@ import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.Toast;
 
 import com.amap.api.location.AMapLocation;
-import com.amap.api.location.AMapLocationClient;
-import com.amap.api.location.AMapLocationClientOption;
-import com.amap.api.location.AMapLocationListener;
 import com.amap.api.maps.AMap;
 import com.amap.api.maps.CameraUpdateFactory;
 import com.amap.api.maps.LocationSource;
@@ -33,10 +34,39 @@ import com.example.mengqi.sportsdemo.Utils.DrawUtils.GaodeLocationUtil;
 import java.util.ArrayList;
 import java.util.List;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
+
 public class MainActivity extends AppCompatActivity implements LocationSource {
     private static final String TAG = "SportsDemo";
 
     private static final int LINE_WIDTH = 16;
+
+    @BindView(R.id.run_hint)
+    ImageView runHintButton;
+    @BindView(R.id.run_location)
+    ImageView runLocationButton;
+    @BindView(R.id.run_destination)
+    ImageView runDestinationButton;
+    @BindView(R.id.run_hint_layout)
+    LinearLayout runHintLayout;
+    @BindView(R.id.run_hint_close)
+    ImageView runHintCloseButton;
+    @BindView(R.id.map_toolbar)
+    LinearLayout mapToolBarLayout;
+    @BindView(R.id.finish_layout)
+    RelativeLayout finishLayout;
+    @BindView(R.id.finish_layout_back)
+    ImageView finishCloseButton;
+    @BindView(R.id.finish_layout_pause)
+    LinearLayout finishPauseButton;
+    @BindView(R.id.finish_layout_continue)
+    LinearLayout finishContinueButton;
+    @BindView(R.id.finish_layout_finish)
+    LinearLayout finishRunButton;
+
+    private Animation aplphaAnimationIn;
+    private Animation aplphaAnimationBack;
 
 
     MapView mMapView = null;
@@ -74,6 +104,10 @@ public class MainActivity extends AppCompatActivity implements LocationSource {
         mMapView = (MapView) findViewById(R.id.gmapView);
         // 在activity执行onCreate时执行mMapView.onCreate(savedInstanceState)，创建地图
         mMapView.onCreate(savedInstanceState);
+        ButterKnife.bind(this);
+
+        aplphaAnimationIn = AnimationUtils.loadAnimation(MainActivity.this, R.anim.hint_layout_alpha_in);
+        aplphaAnimationBack = AnimationUtils.loadAnimation(MainActivity.this, R.anim.hint_layout_alpha_back);
 
         arrowBitmap = BitmapDescriptorFactory.fromResource(R.drawable.arrow1);
         startBitmap = BitmapDescriptorFactory.fromResource(R.drawable.start);
@@ -84,9 +118,9 @@ public class MainActivity extends AppCompatActivity implements LocationSource {
         getPersimmions();
 
 
-        Button mDlBtn = findViewById(R.id.btn_drawline);
-        Button mStartBtn = findViewById(R.id.btn_start);
-        Button mStopBtn = findViewById(R.id.btn_stop);
+//        Button mDlBtn = findViewById(R.id.btn_drawline);
+//        Button mStartBtn = findViewById(R.id.btn_start);
+//        Button mStopBtn = findViewById(R.id.btn_stop);
 
         if (aMap == null) {
             aMap = mMapView.getMap();
@@ -103,33 +137,100 @@ public class MainActivity extends AppCompatActivity implements LocationSource {
         // drawLine历史路线功能
         drawOnMap = new DrawOnMap(this);
 
-        mStartBtn.setOnClickListener(new View.OnClickListener() {
+        runHintButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (runHintLayout.getVisibility() == View.GONE) {
+                    runHintLayout.setVisibility(View.VISIBLE);
+                    runHintLayout.startAnimation(aplphaAnimationIn);
+                    runHintLayout.setClickable(true);
+                }
+            }
+        });
+
+        runHintCloseButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (runHintLayout.getVisibility() == View.VISIBLE) {
+                    runHintLayout.setVisibility(View.GONE);
+                    runHintLayout.startAnimation(aplphaAnimationBack);
+                    runHintLayout.setClickable(false);
+                }
+            }
+        });
+        runDestinationButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (finishLayout.getVisibility() == View.GONE) {
+                    finishLayout.setVisibility(View.VISIBLE);
+                    finishLayout.startAnimation(aplphaAnimationIn);
+                    finishLayout.setClickable(true);
+                }
+            }
+        });
+        finishCloseButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (finishLayout.getVisibility() == View.VISIBLE) {
+                    finishLayout.setVisibility(View.GONE);
+                    finishLayout.startAnimation(aplphaAnimationBack);
+                    finishLayout.setClickable(false);
+                }
+            }
+        });
+        finishPauseButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (finishContinueButton.getVisibility() == View.INVISIBLE && finishRunButton.getVisibility() == View.INVISIBLE) {
+                    finishContinueButton.setVisibility(View.VISIBLE);
+                    finishRunButton.setVisibility(View.VISIBLE);
+                    finishPauseButton.setVisibility(View.INVISIBLE);
+                }
+            }
+        });
+
+        finishContinueButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (finishPauseButton.getVisibility() == View.INVISIBLE) {
+                    finishPauseButton.setVisibility(View.VISIBLE);
+                    finishRunButton.setVisibility(View.INVISIBLE);
+                    finishContinueButton.setVisibility(View.INVISIBLE);
+                }
+            }
+        });
+
+        finishRunButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                locationUtil.stopLocation();
+            }
+        });
+
+        runLocationButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 init();
             }
         });
-
-        mStopBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-            }
-        });
-
-        mDlBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                drawLine();
-            }
-        });
+//
+//        mStopBtn.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//
+//            }
+//        });
+//
+//        mDlBtn.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                drawLine();
+//            }
+//        });
 
     }
 
-    private void init () {
-
-        // 开启定位图层
-        aMap.setMyLocationEnabled(true);
+    private void init() {
 
         setLocationCallBack();
 
@@ -141,14 +242,14 @@ public class MainActivity extends AppCompatActivity implements LocationSource {
         aMap.setMyLocationEnabled(true);
     }
 
-    private void setLocationCallBack(){
+    private void setLocationCallBack() {
         locationUtil = new GaodeLocationUtil();
         locationUtil.setLocationCallBack(new GaodeLocationUtil.ILocationCallBack() {
             @Override
-            public void callBack(double lat,double lgt,AMapLocation aMapLocation) {
-                LatiLong latLng = new LatiLong(lat,lgt);
+            public void callBack(double lat, double lgt, AMapLocation aMapLocation) {
+                LatiLong latLng = new LatiLong(lat, lgt);
                 //根据获取的经纬度，将地图移动到定位位置
-                aMap.moveCamera(CameraUpdateFactory.changeLatLng(new LatLng(lat,lgt)));
+                aMap.moveCamera(CameraUpdateFactory.changeLatLng(new LatLng(lat, lgt)));
                 mListener.onLocationChanged(aMapLocation);
                 drawLineFormDB.insertLatlng(latLng);
             }
@@ -169,16 +270,15 @@ public class MainActivity extends AppCompatActivity implements LocationSource {
     }
 
 
-
     private void drawLine() {
-     // 画出导航线路
+        // 画出导航线路
         List<PolylineOptions> roadOverlay = drawOnMap.drawRoad(arrowBitmap, LINE_WIDTH);
-        for (PolylineOptions options:roadOverlay) {
+        for (PolylineOptions options : roadOverlay) {
             aMap.addPolyline(options);
         }
 
         List<MarkerOptions> startAndEndMarker = drawOnMap.drawStartAndEnd(startBitmap, endBitmap);
-        for (MarkerOptions options:startAndEndMarker) {
+        for (MarkerOptions options : startAndEndMarker) {
             aMap.addMarker(options);
         }
     }
