@@ -28,13 +28,8 @@ public class Fragment_randomMode extends BaseFragment {
         randomRunBeginButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                randomRunBeginButton.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-                        Intent intent = new Intent(getActivity(), MainActivity.class);
-                        startActivity(intent);
-                    }
-                });
+                Intent intent = new Intent(getActivity(), MainActivity.class);
+                startActivity(intent);
             }
         });
         return view;
