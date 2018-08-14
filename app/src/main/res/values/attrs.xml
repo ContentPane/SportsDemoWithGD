@@ -25,4 +25,10 @@
         <attr name="diffuse_speed"/>
     </declare-styleable>
 
+    <declare-styleable name="CircleProgressBar">
+        <attr name="mCircleBgColor" format="color"/>
+        <attr name="mCircleWidth" format="dimension"/>
+        <attr name="mProgressColor" format="color"/>
+    </declare-styleable>
+
 </resources>

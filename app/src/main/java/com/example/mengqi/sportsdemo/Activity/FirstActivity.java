@@ -4,8 +4,6 @@ import android.graphics.Color;
 import android.os.Build;
 import android.os.Handler;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -19,11 +17,8 @@ import android.support.design.widget.TabLayout;
 
 import com.example.mengqi.sportsdemo.Adapter.RunAdapter;
 import com.example.mengqi.sportsdemo.Adapter.TabFragmentPagerAdapter;
-import com.example.mengqi.sportsdemo.Fragments.Fragment_freeMode;
 import com.example.mengqi.sportsdemo.Fragments.Fragment_mine;
-import com.example.mengqi.sportsdemo.Fragments.Fragment_randomMode;
 import com.example.mengqi.sportsdemo.Fragments.Fragment_rank;
-import com.example.mengqi.sportsdemo.Fragments.Fragment_runTogether;
 import com.example.mengqi.sportsdemo.Fragments.Fragment_runship;
 import com.example.mengqi.sportsdemo.Fragments.Fragment_score;
 import com.example.mengqi.sportsdemo.R;
@@ -54,7 +49,7 @@ public class FirstActivity extends AppCompatActivity {
     @BindView(R.id.runbackground)
     FrameLayout runbackground;
     @BindView(R.id.runbackground_cancel)
-    ImageView cacel_runbackground;
+    ImageView cancel_runbackground;
     @BindView(R.id.run_icon)
     CircleImageView runIcon;
     @BindView(R.id.run_viewpager)
@@ -66,6 +61,8 @@ public class FirstActivity extends AppCompatActivity {
     int width;
     int height;
     List<Fragment> mFragmentList;
+
+    private final Handler mHandler = new Handler();
 
 
     @Override
@@ -133,26 +130,30 @@ public class FirstActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 RunAnimUtils.handleAnimate(runbackground, width / 2, height);
-                runIcon.setEnabled(false);
-                cacel_runbackground.setVisibility(View.VISIBLE);
-                mainInterface.setVisibility(View.GONE);
+                if (runbackground.getVisibility() == View.INVISIBLE) {
+                    runbackground.setVisibility(View.VISIBLE);
+                    runbackground.setClickable(true);
+                }
+
             }
         });
 
         // 跑步取消动画
-        cacel_runbackground.setOnClickListener(new View.OnClickListener() {
+        cancel_runbackground.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 RunAnimUtils.handleAnimate(runbackground, width / 2, height);
-                cacel_runbackground.setVisibility(View.GONE);
-                new Handler().postDelayed(new Runnable() {
-                    public void run() {
-                        runIcon.setEnabled(true);
-                        mainInterface.setVisibility(View.VISIBLE);
-                    }
-
-                }, 700);
-
+                if (runbackground.getVisibility() == View.VISIBLE) {
+                    Runnable runnable = new Runnable() {
+                        @Override
+                        public void run() {
+                            runbackground.setVisibility(View.INVISIBLE);
+                            runbackground.setClickable(false);
+                        }
+                    };
+                    mHandler.postDelayed(runnable,400);
+                    mHandler.removeCallbacks(runnable);
+                }
             }
         });
 

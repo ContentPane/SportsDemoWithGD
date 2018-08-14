@@ -39,9 +39,6 @@ public class GaodeLocationUtil implements AMapLocationListener {
         aMapLocationClient.startLocation();
     }
 
-    public void stopLocation() {
-        aMapLocationClient.stopLocation();
-    }
     @Override
     public void onLocationChanged(AMapLocation aMapLocation) {
         if (aMapLocation != null) {

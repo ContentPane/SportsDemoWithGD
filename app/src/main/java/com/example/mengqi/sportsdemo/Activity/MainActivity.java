@@ -4,12 +4,16 @@ import android.Manifest;
 import android.annotation.TargetApi;
 import android.content.pm.PackageManager;
 import android.os.Build;
+import android.os.Handler;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
+import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
@@ -26,10 +30,12 @@ import com.amap.api.maps.model.LatLng;
 import com.amap.api.maps.model.MarkerOptions;
 import com.amap.api.maps.model.PolylineOptions;
 import com.example.mengqi.sportsdemo.Model.LatiLong;
+import com.example.mengqi.sportsdemo.Utils.DrawUtils.CircleProgressBar;
 import com.example.mengqi.sportsdemo.Utils.DrawUtils.DrawOnMap;
 import com.example.mengqi.sportsdemo.Dao.DrawLineDaoImpl;
 import com.example.mengqi.sportsdemo.R;
 import com.example.mengqi.sportsdemo.Utils.DrawUtils.GaodeLocationUtil;
+import com.example.mengqi.sportsdemo.Utils.DrawUtils.LongClickUtils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -63,10 +69,17 @@ public class MainActivity extends AppCompatActivity implements LocationSource {
     @BindView(R.id.finish_layout_continue)
     LinearLayout finishContinueButton;
     @BindView(R.id.finish_layout_finish)
-    LinearLayout finishRunButton;
+    FrameLayout finishRunButton;
+    @BindView(R.id.finish_progressBar)
+    CircleProgressBar circleProgressBar;
 
     private Animation aplphaAnimationIn;
     private Animation aplphaAnimationBack;
+
+    int mTotalProgress = 100;
+    int mCurrentProgress = 0;
+    boolean isClick = false;
+    final Handler mHandler = new Handler();
 
 
     MapView mMapView = null;
@@ -200,12 +213,23 @@ public class MainActivity extends AppCompatActivity implements LocationSource {
             }
         });
 
-        finishRunButton.setOnClickListener(new View.OnClickListener() {
+        finishRunButton.setOnTouchListener(new View.OnTouchListener() {
             @Override
-            public void onClick(View view) {
-                locationUtil.stopLocation();
+            public boolean onTouch(View view, MotionEvent motionEvent) {
+                switch (motionEvent.getAction()) {
+                    case MotionEvent.ACTION_DOWN:
+                        isClick = true;
+                        mCurrentProgress = 0;
+                        startPlay();
+                        return true;
+                    case MotionEvent.ACTION_UP:
+                        isClick = false;
+                        break;
+                }
+                return false;
             }
         });
+
 
         runLocationButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -213,13 +237,7 @@ public class MainActivity extends AppCompatActivity implements LocationSource {
                 init();
             }
         });
-//
-//        mStopBtn.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//
-//            }
-//        });
+
 //
 //        mDlBtn.setOnClickListener(new View.OnClickListener() {
 //            @Override
@@ -230,10 +248,31 @@ public class MainActivity extends AppCompatActivity implements LocationSource {
 
     }
 
+    //结束时圆形按钮动画
+    private void startPlay() {
+        mHandler.post(new Runnable() {
+            @Override
+            public void run() {
+                if (mCurrentProgress < mTotalProgress + 1) {
+                    if (isClick) {
+                        mCurrentProgress += 1;
+                        mHandler.postDelayed(this, 10);
+                        circleProgressBar.setProgress(mCurrentProgress);
+                    } else {
+                        mCurrentProgress = 0;
+                        circleProgressBar.setProgress(mCurrentProgress);
+                    }
+                }
+                if (mCurrentProgress == mTotalProgress) {
+                    deactivate();
+                    Log.d(TAG, "onTouch: equal");
+                }
+            }
+        });
+    }
+
     private void init() {
-
         setLocationCallBack();
-
         //设置定位监听
         aMap.setLocationSource(this);
         //设置缩放级别
@@ -379,8 +418,6 @@ public class MainActivity extends AppCompatActivity implements LocationSource {
     protected void onDestroy() {
         super.onDestroy();
         mMapView.onDestroy();
-//        mLocationClient.unRegisterLocationListener(locListener);
-//        mLocationClient.stop();
     }
 
     @Override

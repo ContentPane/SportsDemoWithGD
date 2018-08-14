@@ -326,28 +326,19 @@
     <!--android:id="@+id/btn_start"-->
     <!--/>-->
 
-    <!--<Button-->
-    <!--android:layout_width="wrap_content"-->
-    <!--android:layout_height="wrap_content"-->
-    <!--android:textSize="12sp"-->
-    <!--android:text="Stop Location"-->
-    <!--android:id="@+id/btn_stop"-->
-    <!--/>-->
-    <!--</LinearLayout>-->
     <RelativeLayout
-        android:visibility="gone"
         android:id="@+id/finish_layout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="#EE333333"
         android:textColor="#FFFFFF"
-        >
+        android:visibility="gone">
 
         <ImageView
             android:id="@+id/finish_layout_back"
-            android:layout_alignParentEnd="true"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
             android:layout_marginEnd="@dimen/x60"
             android:layout_marginTop="@dimen/y40"
             android:background="@drawable/circle_coner_40"
@@ -366,18 +357,18 @@
             android:textStyle="bold" />
 
         <TextView
-            android:layout_below="@+id/finish_Km"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_below="@+id/finish_Km"
             android:gravity="center"
             android:text="公里"
             android:textColor="#66FFFFFF" />
 
 
         <LinearLayout
-            android:layout_centerInParent="true"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
             android:layout_marginTop="@dimen/y180">
 
             <LinearLayout
@@ -461,10 +452,10 @@
         </LinearLayout>
 
         <LinearLayout
-            android:layout_alignParentBottom="true"
-            android:layout_marginBottom="@dimen/y160"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="@dimen/y160"
             android:orientation="horizontal">
 
             <LinearLayout
@@ -499,23 +490,33 @@
 
             </LinearLayout>
 
-            <LinearLayout
-                android:visibility="invisible"
+            <FrameLayout
                 android:id="@+id/finish_layout_finish"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:gravity="center">
+                android:visibility="invisible">
+
+                <com.example.mengqi.sportsdemo.Utils.DrawUtils.CircleProgressBar
+                    android:id="@+id/finish_progressBar"
+                    android:layout_width="@dimen/y180"
+                    android:layout_height="@dimen/y180"
+                    android:layout_gravity="center"
+                    app:mCircleBgColor="#AAAAAA"
+                    app:mCircleWidth="@dimen/x16"
+                    app:mProgressColor="#FF2299" />
 
                 <TextView
-                    android:gravity="center"
-                    android:text="结束"
-                    android:textColor="#22bbbb"
                     android:layout_width="@dimen/y140"
                     android:layout_height="@dimen/y140"
-                    android:background="@drawable/begin_btn" />
+                    android:layout_gravity="center"
+                    android:textSize="10sp"
+                    android:background="@drawable/begin_btn"
+                    android:gravity="center"
+                    android:text="长按结束"
+                    android:textColor="#22bbbb" />
 
-            </LinearLayout>
+            </FrameLayout>
 
         </LinearLayout>
     </RelativeLayout>
