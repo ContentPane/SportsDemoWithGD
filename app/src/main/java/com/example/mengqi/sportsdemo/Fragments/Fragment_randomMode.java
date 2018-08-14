@@ -12,6 +12,8 @@ import com.example.mengqi.sportsdemo.Activity.MainActivity;
 import com.example.mengqi.sportsdemo.R;
 import com.example.mengqi.sportsdemo.Utils.DrawUtils.DiffuseView;
 
+import java.util.ArrayList;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
@@ -32,6 +34,7 @@ public class Fragment_randomMode extends BaseFragment {
                 startActivity(intent);
             }
         });
+
         return view;
     }
 }

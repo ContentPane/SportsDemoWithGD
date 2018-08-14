@@ -132,8 +132,7 @@ public class MainActivity extends AppCompatActivity implements LocationSource {
 
 
 //        Button mDlBtn = findViewById(R.id.btn_drawline);
-//        Button mStartBtn = findViewById(R.id.btn_start);
-//        Button mStopBtn = findViewById(R.id.btn_stop);
+
 
         if (aMap == null) {
             aMap = mMapView.getMap();
